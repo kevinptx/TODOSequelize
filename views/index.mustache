@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="/css/styles.css">
+  <meta charset="utf-8">
+  <title>Todo List</title>
+</head>
+<body>
+  <div class="main">
+    <form action="/" method="post">
+      <div class="inputWrapper">
+        <input class="inputField" type="text" name="todo" value="" placeholder="What is your task?">
+        <input class="inputButton" type="submit" value="Add Task">
+      </div>
+    </form>
+    <!-- each task should have a form and we're deleting by ID. google hidden tag in HTML -->
+    <div class="taskContent">
+      <h3 id="todoHeader">Incomplete Tasks</h3>
+      {{#todos}}
+        <form class="" action="/completed" method="post">
+          <div class="todoSection">
+            <h3 class="todoItem">{{task}}</h3>
+            <button class="completeButton" type="submit" name="button" value="{{id}}">All Done!</button>
+          </div>
+        </form>
+        <form class="edit" action="/edit" method="post">
+          <div class="editSection">
+            <input type="text" name="edit" value="" placeholder="Update Task">
+            <button type="submit" name="editButton" value="{{id}}">Update Task</button>
+          </div>
+        </form>
+      {{/todos}}
+    </div>
+    <div class="deleteAllDiv">
+      <form class="" action="/deleteAll" method="post">
+        <button type="submit" name="deleteAllButton" value="{{todos.id}}">Delete All Tasks</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
